@@ -1,0 +1,129 @@
+<html>
+	<head>
+		<title>
+			jacob's wonderful site
+		</title>
+		<script src="cupid.js"></script>
+		<link rel="stylesheet" type="text/css" href="cupid.css">
+	</head>
+	<body>
+		<form action="index.htm" method="post">
+			<script src="include/header.js"></script>
+			<main>
+				<div class="container">
+					<div class="jumbotron">
+						<h1>form</h1>
+						<p>please fill it in</p>
+					</div>
+					<div class="card form-grid">
+						<h3>personal details</h3>
+						<table>
+							<tr>
+								<th>
+									<label for="first_name">first name</label>
+								</th>
+								<td>
+									<input type="text" placeholder="Johnny" id="first_name" name="first_name" required>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="last_name">last name</label>
+								</th>
+								<td>
+									<input type="text" placeholder="McLastname" id="last_name" name="last_name" required>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="username">username</label>
+								</th>
+								<td>	
+									<input type="text" placeholder="20b1mclj" id="username" name="username" required>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="phone_number">phone number</label>
+								</th>
+								<td>	
+									<input type="text" placeholder="07987654321" id="phone_number" name="phone_number" required>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="gender">gender</label>
+								</th>
+								<td>	
+									<select placeholder="select" id="gender" name="gender" required>
+										<option disabled selected>select...</option>
+										<option>male</option>
+										<option>female</option>
+										<option disabled>third option coming soon!</option>
+									</select>
+							</tr>
+							<tr>
+								<th>
+									<label for="comment">comment (optional)</label>
+								</th>
+								<td>	
+									<textarea placeholder="likes skiing and writing comments" rows="2" id="comment" name="comment" ></textarea>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="card">
+						<h3>question</h3>
+						<div>
+							<input type="radio" id="q1-r1" name="question-1" value="1" required>
+							<label for="q1-r1">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
+						</div>
+						<hr>
+						<div>
+							<input type="radio" id="q1-r2" name="question-1" value="2" required>
+							<label for="q1-r2">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
+						</div>
+						<hr>
+						<div>
+							<input type="radio" id="q1-r3" name="question-1" value="4" required>
+							<label for="q1-r3">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
+						</div>
+						<hr>
+						<div>
+							<input type="radio" id="q1-r4" name="question-1" value="4" required>
+							<label for="q1-r4">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
+						</div>
+					</div>
+					<div class="card">
+						<h3>question</h3>
+						<div>
+							<input type="radio" id="q2-r1" name="question-2" value="1" required>
+							<label for="q2-r1">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
+						</div>
+						<hr>
+						<div>
+							<input type="radio" id="q2-r2" name="question-2" value="2" required>
+							<label for="q2-r2">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
+						</div>
+						<hr>
+						<div>
+							<input type="radio" id="q2-r3" name="question-2" value="4" required>
+							<label for="q2-r3">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
+						</div>
+						<hr>
+						<div>
+							<input type="radio" id="q2-r4" name="question-2" value="4" required>
+							<label for="q2-r4">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
+						</div>
+					</div>
+					<div>
+						<button type="submit">
+							Submit
+						</button>
+					</div>
+				</div>
+			</main>
+			<script src="include/footer.js"></script>
+		</form>
+	</body>
+</html>
