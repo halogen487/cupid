@@ -65,7 +65,7 @@ header{
 .navbar{
 	display: flex;
 	justify-content: space-between;
-	height: 48px;
+	height: 3.2em;
 	align-items: center;
 	padding-left: 16px;
 	padding-right: 16px;
