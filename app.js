@@ -1,33 +1,47 @@
 const path = require("path")
 const express = require("express"); const app = express()
-const bodyParser = require("body-parser")
-const validator = require("express-validator")
-const port = 8080
+const ejs = require("ejs")
 
-app.use(bodyParser.urlencoded({ extended: true }))
 app.use("/static", express.static("static"))
-app.use((req, res, next) => {
-	now = new Date()
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(function (req, res, next) {
 	console.log(`${req.method} request for ${req.url} from ${req.ip}`)
 	next()
 })
 
-app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "public/index.html"))
+app.get("/", function (req, res) {
+	res.sendFile(path.join(__dirname, "pages/index.html"))
 })
-app.get("/form", (req, res) => {
-	res.sendFile(path.join(__dirname, "public/form.html"))
+app.get("/form", function (req, res) {
+	res.sendFile(path.join(__dirname, "pages/form.html"))
 })
-app.get("favicon.ico", (req, res) => {
-	console.log(`favicon request from ${req.ip}`)
-	res.send("no")
+app.post("/submit", function (req, res) {
+	console.log(req.body)
+	wrongs = {}
+	if (!(req.body.phoneNumber.match(/^[0-9]+$/))) {
+		wrongs.phoneNumber = "invalid phone number"
+	}
+	if (["male", "female", "nonbinary"].indexOf(req.body.gender) < 0) {
+		wrongs.gender = "invalid gender"
+	}
+	// if any question isn't 1-4
+	// for () {}
+ 	res.json(req.body)
 })
+// 	body("firstName").isEmail().withMessage("not an email!"),
+// 	(req, res) => {
+// 		const errors = validationResult(req).array()
+// 		console.log(errors)
+// 		if (errors) {
+// 			console.log(`sending back ${req.body.firstName} ${req.body.lastName}`)
+// 		} else {
+// 			console.log(`${req.body.firstName} ${req.body.lastName} correctly did the form`)
+// 		}
+// 		res.send(req.body)
+// 	}
+// )
 
-app.post("/submit", (req, res) => {
-	console.log(`${req.body.firstName} ${req.body.lastName} did the form`)
-	res.sendStatus("200")
-})
-
-app.listen(port, () => {
-	console.log(`cupid is listening on port ${port}`)
+app.listen(80, () => {
+	console.log(`cupid is alive`)
 })

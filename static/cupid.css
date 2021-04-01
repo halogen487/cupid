@@ -116,6 +116,7 @@ div.form-container{
 th{
 	font-weight: normal;
 	text-align: right;
+	padding: 8px;
 }
 select{
 	width: 100%;
