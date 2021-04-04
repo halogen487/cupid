@@ -1,23 +1,40 @@
 const path = require("path")
-const express = require("express"); const app = express()
+const express = require("express")
+const app = express()
 const ejs = require("ejs")
 
 app.use("/static", express.static("static"))
+
 app.use(express.json())
+
 app.use(express.urlencoded({extended: true}))
+
+app.engine("html", ejs.renderFile)
+
 app.use(function (req, res, next) {
 	console.log(`${req.method} request for ${req.url} from ${req.ip}`)
 	next()
 })
 
 app.get("/", function (req, res) {
-	res.sendFile(path.join(__dirname, "pages/index.html"))
+	res.render(path.join(__dirname, "pages/index.html"))
 })
+
 app.get("/form", function (req, res) {
-	res.sendFile(path.join(__dirname, "pages/form.html"))
+	res.render(path.join(__dirname, "pages/form.html"), {wrongs: {}, rights: {}})
 })
+
 app.post("/submit", function (req, res) {
-	console.log(req.body)
+	// make object containing info and answers
+	rights = {answers: []}
+	for (i of Object.keys(req.body)) {
+		if (i.startsWith("question")) {
+			rights.answers[i.slice(-1) - 1] = parseInt(req.body[i])
+		} else {
+			rights[i] = req.body[i]
+		}
+	}
+	// validate
 	wrongs = {}
 	if (!(req.body.phoneNumber.match(/^[0-9]+$/))) {
 		wrongs.phoneNumber = "invalid phone number"
@@ -25,22 +42,20 @@ app.post("/submit", function (req, res) {
 	if (["male", "female", "nonbinary"].indexOf(req.body.gender) < 0) {
 		wrongs.gender = "invalid gender"
 	}
-	// if any question isn't 1-4
-	// for () {}
- 	res.json(req.body)
+	console.log(rights)
+	console.log(wrongs)
+	// send back form or submitted page
+	if (Object.keys(wrongs).length === 0) {
+		res.render(path.join(__dirname, "pages/submit.html"))
+	} else {
+ 		res.render(path.join(__dirname, "pages/form.html"), {wrongs: wrongs, rights: rights})
+ 	}
 })
-// 	body("firstName").isEmail().withMessage("not an email!"),
-// 	(req, res) => {
-// 		const errors = validationResult(req).array()
-// 		console.log(errors)
-// 		if (errors) {
-// 			console.log(`sending back ${req.body.firstName} ${req.body.lastName}`)
-// 		} else {
-// 			console.log(`${req.body.firstName} ${req.body.lastName} correctly did the form`)
-// 		}
-// 		res.send(req.body)
-// 	}
-// )
+
+app.use(function (req, res) {
+	res.status(404)
+	res.render(path.join(__dirname, "pages/404.html"))
+})
 
 app.listen(80, () => {
 	console.log(`cupid is alive`)

@@ -1,17 +1,17 @@
 <html>
 	<head>
 		<title>
-			jacob's wonderful site
+			jacob's wonderful form
 		</title>
 		<link rel="stylesheet" type="text/css" href="/static/cupid.css">
 	</head>
 	<body>
-		<script src="static/header.js"></script>
+		<%- include("header.html")%>
 		<main>
 			<div class="container">
 				<div class="jumbotron">
 					<h1>form</h1>
-					<p>please fill it in</p>
+					<p class="sub">please fill it in</p>
 				</div>
 				<form action="/submit" method="post">
 					<div class="form-container">
@@ -21,91 +21,121 @@
 									<label for="first-name">first name</label>
 								</th>
 								<td>
-									<input type="text" value="" placeholder="Johnny" id="first-name" name="firstName" required>
+									<input type="text" value="<%= rights.firstName ? rights.firstName : ''%>" placeholder="Johnny" id="first-name" name="firstName" required>
 								</td>
+								<% if (typeof wrongs.firstName == "string") { %>
+									<td class="error">
+										<%= wrongs.firstName %>
+									</td>
+								<% } %>
 							</tr>
-							<tr>
+							<tr >
 								<th>
 									<label for="last-name">last name</label>
 								</th>
 								<td>
-									<input type="text" placeholder="McLastname" id="last_name" name="lastName" required>
+									<input type="text" value="<%= rights.lastName ? rights.lastName : ''%>" placeholder="McLastname" id="last-name" name="lastName" required>
 								</td>
+								<% if (typeof wrongs.lastName == "string") { %>
+									<td class="error">
+										<%= wrongs.lastName %>
+									</td>
+								<% } %>
 							</tr>
 							<tr>
 								<th>
 									<label for="username">username</label>
 								</th>
 								<td>	
-									<input type="text" placeholder="20b1mclj" id="username" name="username" required>
+									<input type="text" value="<%= rights.username ? rights.username : ''%>" placeholder="20b1mclj" id="username" name="username" required>
 								</td>
+								<% if (typeof wrongs.username == "string") { %>
+									<td class="error">
+										<%= wrongs.username %>
+									</td>
+								<% } %>
 							</tr>
 							<tr>
 								<th>
 									<label for="phone-number">phone number</label>
 								</th>
 								<td>	
-									<input type="text" placeholder="07987654321" id="phone-number" name="phoneNumber" required>
+									<input type="text" value="<%= rights.phoneNumber ? rights.phoneNumber : ''%>" placeholder="07987654321" id="phone-number" name="phoneNumber" required>
 								</td>
+								<% if (typeof wrongs.phoneNumber == "string") { %>
+									<td class="error">
+										<%= wrongs.phoneNumber %>
+									</td>
+								<% } %>
 							</tr>
 							<tr>
 								<th>
 									<label for="gender">gender</label>
 								</th>
-								<td>	
+								<td>
 									<select placeholder="select" id="gender" name="gender" required>
-										<option disabled selected>select...</option>
-										<option>male</option>
-										<option>female</option>
-										<option>nonbinary</option>
+										<option selected>select...</option>
+										<option <%= rights.gender == 'male' ? 'selected' : '' %>">male</option>
+										<option <%= rights.gender == 'female' ? 'selected' : '' %>>female</option>
+										<option <%= rights.gender == 'nonbinary' ? 'selected' : '' %>>nonbinary</option>
 									</select>
+								</td>
+								<% if (typeof wrongs.gender == "string") { %>
+									<td class="error">
+										<%= wrongs.gender %>
+									</td>
+								<% } %>
 							</tr>
 							<tr>
 								<th>
 									<label for="comment">comment (optional)</label>
 								</th>
 								<td>	
-									<textarea placeholder="likes skiing and writing comments" rows="4" id="comment" name="comment" ></textarea>
+									<textarea placeholder="likes writing comments" rows="4" id="comment" name="comment" ><%= rights.comment ? rights.comment : '' %></textarea>
 								</td>
+								<% if (typeof wrongs.comment == "string") { %>
+									<td class="error">
+										<%= wrongs.comment %>
+									</td>
+								<% } %>
 							</tr>
 						</table>
-						<div class="error">{{error message goes here}}</div>
 					</div>
 					<div class="card">
 						<big>question</big>
 						<p>
-							<input type="radio" id="q1-r1" name="question1" value="1" required>
+							<input type="radio" id="q1-r1" name="question1" value="1" required <% if (rights.answers) {%><%= rights.answers[0] == 1 ? "checked" : "" %><% } %>>
 							<label for="q1-r1">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
 						<p>
-							<input type="radio" id="q1-r2" name="question1" value="2" required>
+							<input type="radio" id="q1-r2" name="question1" value="2" required <% if (rights.answers) {%><%= rights.answers[0] == 2 ? "checked" : "" %><% } %>>
 							<label for="q1-r2">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
 						<p>
-							<input type="radio" id="q1-r3" name="question1" value="4" required>
+							<input type="radio" id="q1-r3" name="question1" value="4" required <% if (rights.answers) {%><%= rights.answers[0] == 3 ? "checked" : "" %><% } %>>
 							<label for="q1-r3">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
 						<p>
-							<input type="radio" id="q1-r4" name="question1" value="4" required>
+							<input type="radio" id="q1-r4" name="question1" value="4" required <% if (rights.answers) {%><%= rights.answers[0] == 4 ? "checked" : "" %><% } %>>
 							<label for="q1-r4">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
 					</div>
 					<div class="card">
 						<big>question</big>
 						<p>
-							<input type="radio" id="q2-r1" name="question2" value="1" required>
+							<input type="radio" id="q2-r1" name="question2" value="1" required <% if (rights.answers) {%><%= rights.answers[1] == 1 ? "checked" : "" %><% } %>>
 							<label for="q2-r1">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
 						<p>
-							<input type="radio" id="q2-r2" name="question2" value="2" required>
+							<input type="radio" id="q2-r2" name="question2" value="2" required <% if (rights.answers) {%><%= rights.answers[1] == 2 ? "checked" : "" %><% } %>>
 							<label for="q2-r2">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
 						<p>
-							<input type="radio" id="q2-r3" name="question2" value="4" required>
+							<input type="radio" id="q2-r3" name="question2" value="4" required <% if (rights.answers) {%><%= rights.answers[1] == 3 ? "checked" : "" %><% } %>>
 							<label for="q2-r3">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
 						<p>
-							<input type="radio" id="q2-r4" name="question2" value="4" required>
+							<input type="radio" id="q2-r4" name="question2" value="4" required <% if (rights.answers) {%><%= rights.answers[1] == 4 ? "checked" : "" %><% } %>>
 							<label for="q2-r4">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
 					</div>
@@ -117,6 +147,6 @@
 				</form>
 			</div>
 		</main>
-		<script src="static/footer.js"></script>
+		<%- include("footer.html")%>
 	</body>
 </html>

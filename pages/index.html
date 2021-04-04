@@ -6,12 +6,12 @@
 		<link rel="stylesheet" type="text/css" href="/static/cupid.css">
 	</head>
 	<body>
-		<script src="/static/header.js"></script>
+		<%- include("header.html")%>
 		<main>
 			<div class="container">
 				<div class="jumbotron">
 					<h1>index.html</h1>
-					<p >A place for filler text</p>
+					<p class="sub">A place for filler text</p>
 				</div>
 				<div class="card">
 					<h2>Filler Text</h2>
@@ -26,13 +26,10 @@
 					<p>Inhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service.</p>
 					<h2>SVG Time</h2>
 					<p>I <!-- <span class="heart-container"><svg class="heart" viewBox="0 0 32 29.6"><path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/></svg></span> --><span class="heart">&#9829</span> U<p>
-					<p>more text</p>
-					<p>Lets also have some <code>code, in different styling</code> up in this bish</p>
-					<p>Maybe spice it up with a <kbd>Keyboard</kbd>+<kbd>Input</kbd>?</p>
-					<p><bdo dir="rtl">Or we could do ANMBULANCE text?</bdo></p>
+					<p>more text and <code>code, in different styling</code></p>
 				</div>
 			</div>
 		</main>
-		<script src="static/footer.js"></script>
+		<%- include("footer.html")%>
 	</body>
 </html>
