@@ -44,14 +44,14 @@
 							</tr>
 							<tr>
 								<th>
-									<label for="username">username</label>
+									<label for="email">email</label>
 								</th>
 								<td>	
-									<input type="text" value="<%= rights.username ? rights.username : ''%>" placeholder="20b1mclj" id="username" name="username" required>
+									<input type="email" value="<%= rights.email ? rights.email : ''%>" placeholder="jml@place.net" id="email" name="email" required>
 								</td>
-								<% if (typeof wrongs.username == "string") { %>
+								<% if (typeof wrongs.email == "string") { %>
 									<td class="error">
-										<%= wrongs.username %>
+										<%= wrongs.email %>
 									</td>
 								<% } %>
 							</tr>

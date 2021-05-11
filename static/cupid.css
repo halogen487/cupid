@@ -36,7 +36,7 @@ a{
 a:hover{
 	text-decoration: underline 2px;
 }
-code{
+code, pre {
 	background: #e5e5e5;
 	font-size: 1.2em;
 	padding: 4px;
@@ -88,7 +88,7 @@ main{
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-	min-height: calc(100vh - 96px);
+	min-height: calc(100vh - 144px);
 }
 div.container{
 	max-width: 1024px;
@@ -132,7 +132,7 @@ textarea{
 	padding: 16px;
 	background: #ffffff;
 	box-shadow: 0px 0px 8px var(--shadow-color);
-	border-radius: 16px;
+	/*border-radius: 16px;*/
 }
 /*footer*/
 footer{
