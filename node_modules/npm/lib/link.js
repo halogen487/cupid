@@ -10,8 +10,8 @@ const semver = require('semver')
 
 const reifyFinish = require('./utils/reify-finish.js')
 
-const BaseCommand = require('./base-command.js')
-class Link extends BaseCommand {
+const ArboristWorkspaceCmd = require('./workspaces/arborist-cmd.js')
+class Link extends ArboristWorkspaceCmd {
   /* istanbul ignore next - see test/lib/load-all-commands.js */
   static get description () {
     return 'Symlink a package folder'
@@ -27,6 +27,26 @@ class Link extends BaseCommand {
     return [
       '(in package dir)',
       '[<@scope>/]<pkg>[@<version>]',
+    ]
+  }
+
+  /* istanbul ignore next - see test/lib/load-all-commands.js */
+  static get params () {
+    return [
+      'save',
+      'save-exact',
+      'global',
+      'global-style',
+      'legacy-bundling',
+      'strict-peer-deps',
+      'package-lock',
+      'omit',
+      'ignore-scripts',
+      'audit',
+      'bin-links',
+      'fund',
+      'dry-run',
+      ...super.params,
     ]
   }
 
@@ -124,12 +144,16 @@ class Link extends BaseCommand {
       log: this.npm.log,
       add: names.map(l => `file:${resolve(globalTop, 'node_modules', l)}`),
       save,
+      workspaces: this.workspaces,
     })
 
     await reifyFinish(this.npm, localArb)
   }
 
   async linkPkg () {
+    const wsp = this.workspacePaths
+    const paths = wsp && wsp.length ? wsp : [this.npm.prefix]
+    const add = paths.map(path => `file:${path}`)
     const globalTop = resolve(this.npm.globalDir, '..')
     const arb = new Arborist({
       ...this.npm.flatOptions,
@@ -138,7 +162,7 @@ class Link extends BaseCommand {
       global: true,
     })
     await arb.reify({
-      add: [`file:${this.npm.prefix}`],
+      add,
       log: this.npm.log,
     })
     await reifyFinish(this.npm, arb)
