@@ -5,6 +5,7 @@ const express = require("express")
 const ejs = require("ejs")
 const sqlite3 = require("sqlite3")
 const log = require("./log.js")
+const questions = require("./questions.json")
 
 const app = express()
 
@@ -23,7 +24,7 @@ app.get("/", function (req, res) {
 })
 
 app.get("/form", function (req, res) {
-	res.render(path.join(__dirname, "pages/form.html"), {wrongs: {}, rights: {}})
+	res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: {}, rights: {}})
 })
 
 app.post("/submit", async function (req, res) {
@@ -69,7 +70,7 @@ app.post("/submit", async function (req, res) {
 					}
 				)
 			} else {
-	 			res.render(path.join(__dirname, "pages/form.html"), {wrongs: wrongs, rights: rights})
+	 			res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: wrongs, rights: rights})
 			}
 		})
 

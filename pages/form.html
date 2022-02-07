@@ -3,7 +3,7 @@
 		<title>
 			jacob's wonderful form
 		</title>
-		<link rel="stylesheet" type="text/css" href="/static/cupid.css">
+		<link rel="stylesheet" type="text/css" href="/static/cupid.css"/>
 	</head>
 	<body>
 		<%- include("header.html")%>
@@ -21,7 +21,7 @@
 									<label for="first-name">first name</label>
 								</th>
 								<td>
-									<input type="text" value="<%= rights.firstName ? rights.firstName : ''%>" placeholder="Johnny" id="first-name" name="firstName" required>
+									<input type="text" value="<%= rights.firstName ? rights.firstName : ''%>" placeholder="Johnny" id="first-name" name="firstName" required="yes"/>
 								</td>
 								<% if (typeof wrongs.firstName == "string") { %>
 									<td class="error">
@@ -34,7 +34,7 @@
 									<label for="last-name">last name</label>
 								</th>
 								<td>
-									<input type="text" value="<%= rights.lastName ? rights.lastName : ''%>" placeholder="McLastname" id="last-name" name="lastName" required>
+									<input type="text" value="<%= rights.lastName ? rights.lastName : ''%>" placeholder="McLastname" id="last-name" name="lastName" required="yes"/>
 								</td>
 								<% if (typeof wrongs.lastName == "string") { %>
 									<td class="error">
@@ -47,7 +47,7 @@
 									<label for="email">email</label>
 								</th>
 								<td>	
-									<input type="email" value="<%= rights.email ? rights.email : ''%>" placeholder="jml@place.net" id="email" name="email" required>
+									<input type="email" value="<%= rights.email ? rights.email : ''%>" placeholder="jml@place.net" id="email" name="email" required/>
 								</td>
 								<% if (typeof wrongs.email == "string") { %>
 									<td class="error">
@@ -60,7 +60,7 @@
 									<label for="phone-number">phone number</label>
 								</th>
 								<td>	
-									<input type="text" value="<%= rights.phoneNumber ? rights.phoneNumber : ''%>" placeholder="07987654321" id="phone-number" name="phoneNumber" required>
+									<input type="text" value="<%= rights.phoneNumber ? rights.phoneNumber : ''%>" placeholder="07987654321" id="phone-number" name="phoneNumber" required/>
 								</td>
 								<% if (typeof wrongs.phoneNumber == "string") { %>
 									<td class="error">
@@ -73,7 +73,7 @@
 									<label for="gender">gender</label>
 								</th>
 								<td>
-									<select placeholder="select" id="gender" name="gender" required>
+									<select placeholder="select" id="gender" name="gender" required="yes">
 										<option selected>select...</option>
 										<option <%= rights.gender == 'male' ? 'selected' : '' %>">male</option>
 										<option <%= rights.gender == 'female' ? 'selected' : '' %>>female</option>
@@ -101,8 +101,8 @@
 							</tr>
 						</table>
 					</div>
-					<div class="card">
-						<big>question</big>
+					<section class="card">
+						<p class="big">question</p>
 						<p>
 							<input type="radio" id="q1-r1" name="question1" value="1" required <% if (rights.answers) {%><%= rights.answers[0] == 1 ? "checked" : "" %><% } %>>
 							<label for="q1-r1">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
@@ -119,26 +119,7 @@
 							<input type="radio" id="q1-r4" name="question1" value="4" required <% if (rights.answers) {%><%= rights.answers[0] == 4 ? "checked" : "" %><% } %>>
 							<label for="q1-r4">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
 						</p>
-					</div>
-					<div class="card">
-						<big>question</big>
-						<p>
-							<input type="radio" id="q2-r1" name="question2" value="1" required <% if (rights.answers) {%><%= rights.answers[1] == 1 ? "checked" : "" %><% } %>>
-							<label for="q2-r1">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
-						</p>
-						<p>
-							<input type="radio" id="q2-r2" name="question2" value="2" required <% if (rights.answers) {%><%= rights.answers[1] == 2 ? "checked" : "" %><% } %>>
-							<label for="q2-r2">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
-						</p>
-						<p>
-							<input type="radio" id="q2-r3" name="question2" value="4" required <% if (rights.answers) {%><%= rights.answers[1] == 3 ? "checked" : "" %><% } %>>
-							<label for="q2-r3">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
-						</p>
-						<p>
-							<input type="radio" id="q2-r4" name="question2" value="4" required <% if (rights.answers) {%><%= rights.answers[1] == 4 ? "checked" : "" %><% } %>>
-							<label for="q2-r4">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
-						</p>
-					</div>
+					</section>
 					<div class="form-container">
 						<button type="submit">
 							Submit
