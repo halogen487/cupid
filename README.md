@@ -4,7 +4,7 @@ Cupid is a website containing a quiz. Answers get saved in a database and on Val
 This project is a **joke**, please do not take it seriously. We made this last minute just for fun.
 
 
-- [Trello](https://trello.com/invite/b/cXxR1x4s/4da56287093b657b20f617dff884614c/todo)
+- [Trello](https://trello.com/b/cXxR1x4s/todo)
 
 
 ##  Server setup
