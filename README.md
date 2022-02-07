@@ -1,5 +1,5 @@
 # cupid
-Simple website full of filler text. There's a form you can fill in and it saves it in a SQLite database.
+Cupid is a website containing a quiz. Answers get saved in a database and on Valentine's day, an advanced blockchain algorithm determines who'd make the best couples.
 
 # Disclamer
 This project is a <b>joke</b> and is not inteded to be taken seriously.
