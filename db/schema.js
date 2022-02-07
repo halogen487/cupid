@@ -11,7 +11,6 @@ const schema = {
                         {"name": "surname", "type": "text", "increment": false},
                         {"name": "email", "type": "text", "increment": false},
                         {"name": "gender", "type": "text", "increment": false},
-                        {"name": "orientation", "type": "text", "increment": false},
                         {"name": "comment", "type": "text", "increment": false},
                         {"name": "answers", "type": "text", "increment": false},
 
