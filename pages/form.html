@@ -75,9 +75,9 @@
 								<td>
 									<select placeholder="select" id="gender" name="gender" required="yes">
 										<option selected>select...</option>
-										<option <%= rights.gender == 'male' ? 'selected' : '' %>">male</option>
-										<option <%= rights.gender == 'female' ? 'selected' : '' %>>female</option>
-										<option <%= rights.gender == 'nonbinary' ? 'selected' : '' %>>nonbinary</option>
+										<% for (i in gender_list) { %>
+											<option <%= rights.gender == gender_list[i] ? 'selected' : '' %>"><%= gender_list[i] %></option>
+										<% } %>
 									</select>
 								</td>
 								<% if (typeof wrongs.gender == "string") { %>

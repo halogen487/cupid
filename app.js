@@ -31,7 +31,7 @@ app.get("/", function (req, res) {
 })
 
 app.get("/form", function (req, res) {
-	res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: {}, rights: {}})
+	res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: {}, rights: {}, gender_list: config.gender_list})
 })
 
 app.post("/submit", async function (req, res) {
@@ -79,7 +79,7 @@ app.post("/submit", async function (req, res) {
 
 		// return back if there are any errors
 		if (Object.keys(wrongs).length > 0) {
-			res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: wrongs, rights: rights})
+			res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: wrongs, rights: rights, gender_list: config.gender_list})
 
 		} else {
 			// generate sql query
