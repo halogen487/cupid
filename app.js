@@ -9,8 +9,6 @@ const questions = require("./questions.json")
 const config = require("./config/config")
 const db_functions = require("./db_functions")
 
-
-
 const app = express()
 
 app.use("/static", express.static("static"))
@@ -37,6 +35,8 @@ app.get("/form", function (req, res) {
 app.post("/submit", async function (req, res) {
 	try {
 
+		console.log(req.body)
+		
 		let rights = {}
 		rights.qa = {}
 
