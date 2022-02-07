@@ -89,6 +89,8 @@ main{
 	flex-flow: column;
 	align-items: center;
 	min-height: calc(100vh - 144px);
+	width: 100%;
+	/*max-width: 1024px;*/
 }
 div.container{
 	max-width: 1024px;
@@ -130,9 +132,11 @@ textarea{
 .card{
 	margin: 32px;
 	padding: 16px;
+	width: calc(100% - 48px);
+	max-width: 1024px;
 	background: #ffffff;
 	box-shadow: 0px 0px 8px var(--shadow-color);
-	/*border-radius: 16px;*/
+	border-radius: 16px;
 }
 .big {
 	font-size: 1.5em;
@@ -144,4 +148,5 @@ footer{
 	height: 48px;
 	width: 100%;
 	align-items: center;
+	flex-direction: column;
 }

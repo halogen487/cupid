@@ -8,7 +8,7 @@
 	<body>
 		<%- include("header.html")%>
 		<main>
-			<div class="container">
+			<!-- <div class="container"> -->
 				<div class="jumbotron">
 					<h1>form</h1>
 					<p class="sub">please fill it in</p>
@@ -55,19 +55,19 @@
 									</td>
 								<% } %>
 							</tr>
-							<tr>
-								<th>
-									<label for="phone-number">phone number</label>
-								</th>
-								<td>	
-									<input type="text" value="<%= rights.phoneNumber ? rights.phoneNumber : ''%>" placeholder="07987654321" id="phone-number" name="phoneNumber" required/>
-								</td>
-								<% if (typeof wrongs.phoneNumber == "string") { %>
-									<td class="error">
-										<%= wrongs.phoneNumber %>
-									</td>
-								<% } %>
-							</tr>
+							<!-- <tr> -->
+							<!-- 	<th> -->
+							<!-- 		<label for="phone-number">phone number</label> -->
+							<!-- 	</th> -->
+							<!-- 	<td>	 -->
+							<!-- 		<input type="text" value="<%= rights.phoneNumber ? rights.phoneNumber : ''%>" placeholder="07987654321" id="phone-number" name="phoneNumber" required/> -->
+							<!-- 	</td> -->
+							<!-- 	<% if (typeof wrongs.phoneNumber == "string") { %> -->
+							<!-- 		<td class="error"> -->
+							<!-- 			<%= wrongs.phoneNumber %> -->
+							<!-- 		</td> -->
+							<!-- 	<% } %> -->
+							<!-- </tr> -->
 							<tr>
 								<th>
 									<label for="gender">gender</label>
@@ -101,32 +101,24 @@
 							</tr>
 						</table>
 					</div>
-					<section class="card">
-						<p class="big">question</p>
-						<p>
-							<input type="radio" id="q1-r1" name="question1" value="1" required <% if (rights.answers) {%><%= rights.answers[0] == 1 ? "checked" : "" %><% } %>>
-							<label for="q1-r1">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
-						</p>
-						<p>
-							<input type="radio" id="q1-r2" name="question1" value="2" required <% if (rights.answers) {%><%= rights.answers[0] == 2 ? "checked" : "" %><% } %>>
-							<label for="q1-r2">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
-						</p>
-						<p>
-							<input type="radio" id="q1-r3" name="question1" value="4" required <% if (rights.answers) {%><%= rights.answers[0] == 3 ? "checked" : "" %><% } %>>
-							<label for="q1-r3">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
-						</p>
-						<p>
-							<input type="radio" id="q1-r4" name="question1" value="4" required <% if (rights.answers) {%><%= rights.answers[0] == 4 ? "checked" : "" %><% } %>>
-							<label for="q1-r4">Et autem necessitatibus mollitia blanditiis dolor distinctio nesciunt sequi. Dolores hic molestiae vitae aut similique omnis. Sint rerum tenetur ex. Culpa ea quas ab qui voluptate ipsa aut esse. Expedita consequatur voluptatem molestias vel nam quo. Unde eveniet quia perferendis</label>
-						</p>
-					</section>
+					<% for (let i in questions) { %>
+						<section class="card">
+							<p class="big"><%= questions[i].question %></p>
+							<% for (let j in questions[i].answers) { %>
+								<p>
+									<input type="radio" id="q<%= i %>-r<%= j %>" name="question<%= i %>" value="<% j %>" required <% if (rights.answers) {%><%= rights.answers[i] == j ? "checked" : "" %><% } %>>
+									<label for="q<%= i %>-r<%= j %>"><%= questions[i].answers[j] %></label>
+								</p>
+							<% } %>
+						</section>
+					<% } %>
 					<div class="form-container">
-						<button type="submit">
+						<button class="big" type="submit">
 							Submit
 						</button>
 					</div>
 				</form>
-			</div>
+			<!-- </div> -->
 		</main>
 		<%- include("footer.html")%>
 	</body>
