@@ -31,3 +31,12 @@ export CUPID_DB_HOST="<db host>"
 ```
 Don't forget to `source ~/.bashrc` to make the changes take effect.
 
+
+### Creating the database
+```bash
+# the db will be created according to db/schema.js
+node db/createdb.js
+```
+
+### Updating database
+Either update manually or by deleting the table (or db if nessesary), update the db/schema.js and run `node db/createdb.js`
