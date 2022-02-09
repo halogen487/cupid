@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>404</title>
+	<title><%= errCode %></title>
 	<link rel="stylesheet" type="text/css" href="/static/cupid.css">
 </head>
 <body>
 <%- include("header.html")%>
 <main>
 	<div class="jumbotron">
-		<code class="lorge">Error 500</code>
-		<p class="sub">Internal Server Error</p>
-		<p>The server tried to send you that page but broke. Go <a href="/">home</a>?</p>
+		<code class="lorge">Error <%= errCode %></code>
+		<p class="sub"><%= errDesc %></p>
+		<p><%= errMsg %> Go <a href="/">home</a>?</p>
 	</div>
 </main>
 <%- include("footer.html")%>

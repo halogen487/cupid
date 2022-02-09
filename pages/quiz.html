@@ -2,23 +2,22 @@
 <html>
 	<head>
 		<title>
-			jacob's wonderful form
+			jacob's wonderful quiz
 		</title>
 		<link rel="stylesheet" type="text/css" href="/static/cupid.css"/>
 	</head>
 	<body>
 		<%- include("header.html")%>
 		<main>
-			<b>Deadline to submit your form:</b> <div id="countdown"></div>
 			<% if (wrongs.past_deadline == true) { %>
 				<td class="error">
-					The deadline for completing the form has passed. We are sorry :(. Keep an eye out for the next event.
+					The deadline for completing the quiz has passed. We are sorry :(. Keep an eye out for the next event.
 				</td>
 			<% } %>
 			<!-- <div class="container"> -->
 				<div class="jumbotron">
-					<h1>form</h1>
-					<p class="sub">please fill it in</p>
+					<h1>quiz</h1>
+					<p class="sub">please fill it in within <span id="countdown"></span></p>
 				</div>
 				
 				<form action="/submit" method="post">

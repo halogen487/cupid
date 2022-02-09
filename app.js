@@ -30,14 +30,13 @@ app.get("/", function (req, res) {
 	res.render(path.join(__dirname, "pages/index.html"))
 })
 
-app.get("/form", function (req, res) {
+app.get("/quiz", function (req, res) {
 	let template_data = {}
 	template_data.deadline = config.event_deadline
-	res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: {}, rights: {}, gender_list: config.gender_list, template_data: template_data})
+	res.render(path.join(__dirname, "pages/quiz.html"), {questions: questions, wrongs: {}, rights: {}, gender_list: config.gender_list, template_data: template_data})
 })
 
 app.post("/submit", async function (req, res) {
-	
 
 		let rights = {}
 		rights.qa = {}
@@ -56,7 +55,7 @@ app.post("/submit", async function (req, res) {
 		if (today > deadline) {
 			log("Submit attmpted after deadline")
 			wrongs.past_deadline = true
-			res.render(path.join(__dirname, "pages/form.html"), {questions: questions, 
+			res.render(path.join(__dirname, "pages/quiz.html"), {questions: questions,
 																wrongs: wrongs, 
 																rights: rights, 
 																gender_list: 
@@ -105,7 +104,7 @@ app.post("/submit", async function (req, res) {
 
 		// return back if there are any errors
 		if (Object.keys(wrongs).length > 0) {
-			res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: wrongs, rights: rights, gender_list: config.gender_list, template_data: template_data})
+			res.render(path.join(__dirname, "pages/quiz.html"), {questions: questions, wrongs: wrongs, rights: rights, gender_list: config.gender_list, template_data: template_data})
 			console.log(wrongs)
 		} else {
 			// generate sql query
@@ -133,7 +132,7 @@ app.post("/submit", async function (req, res) {
 	} catch (err) {
 		log(err)
 		res.status(500)
-		res.render(path.join(__dirname, "pages/500.html"))
+		res.render(path.join(__dirname, "pages/error.html"), {errCode: 500, errDesc: "Internal Server Error", errMsg: "The server tried to send you that page but broke."})
 	} finally {
 		//always close that db connection
 		conn.awaitEnd()
@@ -142,7 +141,7 @@ app.post("/submit", async function (req, res) {
 
 app.use(function (req, res) {
 	res.status(404)
-	res.render(path.join(__dirname, "pages/404.html"))
+	res.render(path.join(__dirname, "pages/error.html"), {errCode: 404, errDesc: "Page Not Found", errMsg: "That page does not exist."})
 })
 
 app.listen(process.env.PORT ||8000, () => {

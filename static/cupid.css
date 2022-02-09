@@ -1,15 +1,3 @@
-:root{
-	--shadow-color: #c0c0c0; /*0px 0px 8px var(--shadow-color)*/
-}
-@media (max-width: 1024px) {
-	body {
-		font-size: 48px;
-	}
-	h1 {
-		color: red;
-	}
-}
-
 /*typography*/
 body{
 	font-family: sans-serif;
@@ -47,7 +35,7 @@ a:hover{
 }
 code, pre {
 	background: #e5e5e5;
-	font-size: 1.2em;
+	font-size: 1em;
 	padding: 0.35em;
 	border-radius: 0.25em;
 }
@@ -56,7 +44,7 @@ code, pre {
 	font-size: 1em;
 }
 .lorge {
-	font-size: 9em;
+	font-size: 10vw;
 	font-family: monospace;
 }
 /*header*/
@@ -66,6 +54,7 @@ header{
 	box-shadow: 0px 0px 0.5em var(--shadow-color);
 	background: #ffffff;
 	margin-bottom: 2em;
+	width: 100%;
 }
 .navbar{
 	display: flex;
@@ -79,8 +68,8 @@ header{
 	max-width: 58em;
 }
 .navbar-brand{
-	font-size: 1.5em;
 	font-weight: bold;
+	font-size: 1.5em;
 }
 .navbar ul{
 	display: flex;
@@ -91,6 +80,12 @@ header{
 .navbar li{
 	margin-left: 0.5ch;
 	margin-right: 0.5ch;
+}
+.navbar li:after	{
+	content: "•";
+}
+.navbar li:last-child:after	{
+	content: none;
 }
 /*content*/
 main{
@@ -115,7 +110,12 @@ div.container{
 .jumbotron .sub::before, .jumbotron .sub::after{
 	content: " ~ ";
 }
-div.form-container{
+div.forma-container{
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+form {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
@@ -139,14 +139,13 @@ textarea{
 	border-radius: 0.5em;
 }
 .card{
-	margin: 2em;
+	margin: 1em;
 	padding: 1em;
-	width: calc(100% - 3em);
+	width: calc(100% - 4em);
 	max-width: 64em;
 	background: #ffffff;
 	box-shadow: 0px 0px 0.5em var(--shadow-color);
 	border-radius: 1em;
-	font-size: 1em;
 }
 .big {
 	font-size: 1.5em;
@@ -159,4 +158,19 @@ footer{
 	width: 100%;
 	align-items: center;
 	flex-direction: column;
+}
+@media (max-width: 1024px) {
+	body {
+		font-size: 36px;
+	}
+	.card {
+		border-radius: 0em;
+		width: calc(100% - 2em);
+	}
+	input {
+		font-size: 1.2em;
+	}
+	select {
+		font-size: 1.2em;
+	}
 }
