@@ -119,6 +119,6 @@ app.use(function (req, res) {
 	res.render(path.join(__dirname, "pages/404.html"))
 })
 
-app.listen(8000, () => {
+app.listen(process.env.PORT ||8000, () => {
 	log(`Cupid is alive.`)
 })
