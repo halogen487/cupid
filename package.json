@@ -14,7 +14,7 @@
     "sqlite3": "^5.0.2"
   },
   "scripts": {
-    "test": "sudo ./app.js"
+    "test": "./app.js"
   },
   "repository": {
     "type": "git",

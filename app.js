@@ -9,7 +9,7 @@ const questions = require("./questions.json")
 const config = require("./config/config")
 const db_functions = require("./db_functions")
 
-
+console.log(process.env.CUPID_DB_NAME)
 
 const app = express()
 
@@ -74,7 +74,7 @@ app.post("/submit", async function (req, res) {
 		entry_exists = await db_functions.email_in_table(conn, rights.email, "cupid_data")
 
 		if (entry_exists){
-			wrongs.email = "This email has alkready done the survey"
+			wrongs.email = "This email has already done the survey"
 		}
 
 		// return back if there are any errors
@@ -107,7 +107,7 @@ app.post("/submit", async function (req, res) {
 	} catch (err) {
 		log(err)
 		res.status(500)
-		res.send("Internal server error")
+		res.render(path.join(__dirname, "pages/500.html"))
 	} finally {
 		//always close that db connection
 		conn.awaitEnd()
