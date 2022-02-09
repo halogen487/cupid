@@ -42,3 +42,25 @@ node db/createdb.js
 ```
 
 To update the database, either update manually or by deleting the table (or db if nessesary), update the db/schema.js and run `node db/createdb.js`
+
+## Deploying to Heroku
+
+Install heroku cli
+```bash
+sudo snap install --classic heroku
+```
+
+Authenticate
+```bash
+heroku login -i
+```
+
+Add heroku as remote
+```bash
+heroku git:remote -a sandon-cupid
+```
+Push changes
+```
+git push heroku main
+
+```
