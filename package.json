@@ -14,7 +14,8 @@
     "sqlite3": "^5.0.2"
   },
   "scripts": {
-    "test": "./app.js"
+    "test": "./app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
