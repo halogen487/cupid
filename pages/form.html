@@ -9,11 +9,18 @@
 	<body>
 		<%- include("header.html")%>
 		<main>
+			<b>Deadline to submit your form:</b> <div id="countdown"></div>
+			<% if (wrongs.past_deadline == true) { %>
+				<td class="error">
+					The deadline for completing the form has passed. We are sorry :(. Keep an eye out for the next event.
+				</td>
+			<% } %>
 			<!-- <div class="container"> -->
 				<div class="jumbotron">
 					<h1>form</h1>
 					<p class="sub">please fill it in</p>
 				</div>
+				
 				<form action="/submit" method="post">
 					<div class="form-container">
 						<table>
@@ -114,12 +121,53 @@
 						</section>
 					<% } %>
 					<div class="form-container">
-						<button class="big" type="submit">
+						<button class="big" type="submit" id="submit-btn">
 							Submit
 						</button>
 					</div>
 				</form>
 			<!-- </div> -->
+
+			<div id="deadline-value" style="display: none;"><%= template_data.deadline %></div>
+		
+		<script>
+			let deadline_date = document.getElementById("deadline-value").innerHTML;
+
+			var end = new Date(deadline_date);
+
+			var _second = 1000;
+			var _minute = _second * 60;
+			var _hour = _minute * 60;
+			var _day = _hour * 24;
+			var timer;
+
+			showRemaining();
+
+			function showRemaining() {
+				var now = new Date();
+				var distance = end - now;
+				if (distance < 0) {
+
+					clearInterval(timer);
+					document.getElementById('countdown').innerHTML = 'Sorry, you are too late :(. Keep and eye out for the next one!';
+					document.getElementById("submit-btn").disabled = true; 
+
+					return;
+				}
+				var days = Math.floor(distance / _day);
+				var hours = Math.floor((distance % _day) / _hour); 
+				var minutes = Math.floor((distance % _hour) / _minute);
+				var seconds = Math.floor((distance % _minute) / _second);
+
+				document.getElementById('countdown').innerHTML = days + ' days ';
+				document.getElementById('countdown').innerHTML += hours + ' hrs ';
+				document.getElementById('countdown').innerHTML += minutes + ' mins ';
+				document.getElementById('countdown').innerHTML += seconds + ' secs';
+			}
+
+			timer = setInterval(showRemaining, 1000);
+		</script>	
+
 		</main>
 		<%- include("footer.html")%>
 	</body>
