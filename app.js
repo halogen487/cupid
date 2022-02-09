@@ -31,16 +31,42 @@ app.get("/", function (req, res) {
 })
 
 app.get("/form", function (req, res) {
-	res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: {}, rights: {}, gender_list: config.gender_list})
+	let template_data = {}
+	template_data.deadline = config.event_deadline
+	res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: {}, rights: {}, gender_list: config.gender_list, template_data: template_data})
 })
 
 app.post("/submit", async function (req, res) {
-	try {
+	
 
 		let rights = {}
 		rights.qa = {}
 
 		let wrongs = {}
+		let template_data = {}
+
+		//check if the current date is before deadline
+		let today = new Date()
+		let deadline = new Date(config.event_deadline)
+
+		template_data.deadline = deadline
+
+		console.log(today, deadline)
+
+		if (today > deadline) {
+			log("Submit attmpted after deadline")
+			wrongs.past_deadline = true
+			res.render(path.join(__dirname, "pages/form.html"), {questions: questions, 
+																wrongs: wrongs, 
+																rights: rights, 
+																gender_list: 
+																config.gender_list, template_data: template_data})
+			return
+
+		}
+
+
+	try {
 
 		// seperate questions from general info
 		for (key of Object.keys(req.body)) {
@@ -79,8 +105,8 @@ app.post("/submit", async function (req, res) {
 
 		// return back if there are any errors
 		if (Object.keys(wrongs).length > 0) {
-			res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: wrongs, rights: rights, gender_list: config.gender_list})
-
+			res.render(path.join(__dirname, "pages/form.html"), {questions: questions, wrongs: wrongs, rights: rights, gender_list: config.gender_list, template_data: template_data})
+			console.log(wrongs)
 		} else {
 			// generate sql query
 			let sql_code = (`INSERT INTO cupid_data `
@@ -119,6 +145,6 @@ app.use(function (req, res) {
 	res.render(path.join(__dirname, "pages/404.html"))
 })
 
-app.listen(8000, () => {
+app.listen(process.env.PORT ||8000, () => {
 	log(`Cupid is alive.`)
 })
