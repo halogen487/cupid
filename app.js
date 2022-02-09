@@ -5,7 +5,7 @@ const express = require("express")
 const ejs = require("ejs")
 const sqlite3 = require("sqlite3")
 const log = require("./log.js")
-const questions = require("./questions.json")
+const questions = require("./config/questions.json")
 const config = require("./config/config")
 const db_functions = require("./db_functions")
 
