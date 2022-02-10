@@ -54,7 +54,7 @@ async function email_in_table(conn, email, table_name){
 async function getLoverCount (conn, table) {
 	try {
 		let res = await send_sql(conn, `SELECT COUNT(email) FROM ${table}`)
-		console.log(res[0]["COUNT(email)"])
+		let count = res[0]["COUNT(email)"]
 		return count
 	} catch (e) {
 		console.log(e)

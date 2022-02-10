@@ -174,5 +174,34 @@
 			"Sam & iPad",
 			"George & Jess"
 		]
+	},
+	{
+		"question": "Favourite literary technique?",
+		"answers": [
+			"Pathetic fallacy",
+			"Semantic field",
+			"Onomatopoeia",
+			"Hyperbole"
+		]
+	},
+	{
+		"question": "Da...?",
+		"answers": [
+			"Vinki",
+			"Broglie",
+			"Bussy",
+			"Baby"
+		]
+	},
+	{
+		"question": "Favourite chess piece?",
+		"answers": [
+			"Prawn",
+			"Castle",
+			"Horsie",
+			"Bishop",
+			"Queen",
+			"King"
+		]
 	}
 ]

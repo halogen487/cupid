@@ -131,6 +131,10 @@ td {
 select{
 	width: 100%;
 }
+.choice.selected {
+	border: 2px solid #a60000;
+	border-radius: 0.5em;
+}
 label {
 
 }

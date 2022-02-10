@@ -27,6 +27,7 @@ app.use(function (req, res, next) {
 })
 
 app.get("/", function (req, res) {
+	console.log(loverCount)
 	res.render(path.join(__dirname, "pages/index.html"), {loverCount: loverCount})
 })
 

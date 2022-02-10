@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>
-			jacob's wonderful quiz
+			Jacob's wonderful quiz
 		</title>
 		<link rel="stylesheet" type="text/css" href="/static/cupid.css"/>
 	</head>
@@ -110,9 +110,9 @@
 					</div>
 					<% for (let i in questions) { %>
 						<section class="card">
-							<p clgass="big"><%= questions[i].question %></p>
+							<p clgass="big"><%= Number(i) + 1 %>. <%= questions[i].question %></p>
 							<% for (let j in questions[i].answers) { %>
-								<p>
+								<p class="choice">
 									<input type="radio" id="q<%= i %>-r<%= j %>" name="question<%= i %>" value="<%= j %>" required <% if (rights.qa) {%><%= rights.qa[i] == j ? "checked" : "" %><% } %>>
 									<label for="q<%= i %>-r<%= j %>"><%= questions[i].answers[j] %></label>
 								</p>
@@ -165,6 +165,21 @@
 			}
 
 			timer = setInterval(showRemaining, 1000);
+
+			function choiceBorders () {
+				for (i of document.querySelectorAll("input")) {
+					if (i.checked) {
+						i.parentNode.classList.add("selected")
+					} else {
+						i.parentNode.classList.remove("selected")
+					}
+				}
+			}
+
+			choiceBorders()
+			for (i of document.querySelectorAll("input")) {
+				i.addEventListener("click", choiceBorders)
+			}
 		</script>	
 
 		</main>
