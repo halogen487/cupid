@@ -131,6 +131,9 @@ td {
 select{
 	width: 100%;
 }
+label {
+
+}
 textarea{
 	width: 100%;
 }
@@ -142,7 +145,7 @@ textarea{
 	margin: 1em;
 	padding: 1em;
 	width: calc(100% - 4em);
-	max-width: 64em;
+	max-width: 48em;
 	background: #ffffff;
 	box-shadow: 0px 0px 0.5em var(--shadow-color);
 	border-radius: 1em;
@@ -164,8 +167,7 @@ footer{
 		font-size: 24px;
 	}
 	.card {
-		border-radius: 0em;
-		width: calc(100% - 2em);
+		width: 100%;
 	}
 	input {
 		font-size: 1.2em;

@@ -110,10 +110,10 @@
 					</div>
 					<% for (let i in questions) { %>
 						<section class="card">
-							<p class="big"><%= questions[i].question %></p>
+							<p clgass="big"><%= questions[i].question %></p>
 							<% for (let j in questions[i].answers) { %>
 								<p>
-									<input type="radio" id="q<%= i %>-r<%= j %>" name="question<%= i %>" value="<%= j %>" required <% if (rights.answers) {%><%= rights.answers[i] == j ? "checked" : "" %><% } %>>
+									<input type="radio" id="q<%= i %>-r<%= j %>" name="question<%= i %>" value="<%= j %>" required <% if (rights.qa) {%><%= rights.qa[i] == j ? "checked" : "" %><% } %>>
 									<label for="q<%= i %>-r<%= j %>"><%= questions[i].answers[j] %></label>
 								</p>
 							<% } %>

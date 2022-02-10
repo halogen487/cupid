@@ -49,8 +49,16 @@ async function email_in_table(conn, email, table_name){
         console.log(e)
         throw new Error("DBEmailInTableError")
     }
-
 }
 
+async function getLoverCount (conn, table) {
+	try {
+		let res = await send_sql(conn, `SELECT COUNT(email) FROM ${table}`)
+		console.log(res[0]["COUNT(email)"])
+		return count
+	} catch (e) {
+		console.log(e)
+	}
+}
 
-module.exports = {connectdb, send_sql, email_in_table}
+module.exports = {connectdb, send_sql, email_in_table, getLoverCount}

@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
 })
 
 app.get("/", function (req, res) {
-	res.render(path.join(__dirname, "pages/index.html"))
+	res.render(path.join(__dirname, "pages/index.html"), {loverCount: loverCount})
 })
 
 app.get("/quiz", function (req, res) {
@@ -90,7 +90,7 @@ app.post("/submit", async function (req, res) {
 
 
 		// check if this email have already done the survey
-		var conn = await db_functions.connectdb(process.env.CUPID_DB_HOST, 
+		var conn = await db_functions.connectdb(process.env.CUPID_DB_HOST,
 											   process.env.CUPID_DB_USER, 
 											   process.env.CUPID_DB_PASS, 
 											   process.env.CUPID_DB_NAME)
@@ -106,7 +106,6 @@ app.post("/submit", async function (req, res) {
 		// return back if there are any errors
 		if (Object.keys(wrongs).length > 0) {
 			res.render(path.join(__dirname, "pages/quiz.html"), {questions: questions, wrongs: wrongs, rights: rights, gender_list: config.gender_list, template_data: template_data})
-			console.log(wrongs)
 		} else {
 			// generate sql query
 			let sql_code = (`INSERT INTO cupid_data `
@@ -127,6 +126,7 @@ app.post("/submit", async function (req, res) {
 
 			res.status(200)
 			res.render(path.join(__dirname, "pages/submit.html"), {rightsStr: JSON.stringify(rights, null, 4)})
+			log(`New lover ${rights.firstName} ${rights.lastName}`)
 
 		}
 
@@ -144,6 +144,19 @@ app.use(function (req, res) {
 	res.status(404)
 	res.render(path.join(__dirname, "pages/error.html"), {errCode: 404, errDesc: "Page Not Found", errMsg: "That page does not exist."})
 })
+
+var loverCount = 0
+
+let setLoverCount = async () => {
+	let conn = await db_functions.connectdb(process.env.CUPID_DB_HOST,
+											process.env.CUPID_DB_USER,
+											process.env.CUPID_DB_PASS,
+											process.env.CUPID_DB_NAME)
+	await conn.awaitBeginTransaction()
+	loverCount = await db_functions.getLoverCount(conn, "cupid_data")
+}
+setLoverCount()
+setInterval(setLoverCount, 100000)
 
 app.listen(process.env.PORT ||8000, () => {
 	log(`Cupid is alive.`)
