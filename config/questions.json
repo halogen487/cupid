@@ -1,20 +1,178 @@
 [
 	{
-		"question": "Favourite colour?",
+		"question": "Pineapple on pizza?",
 		"answers": [
-			"Red",
-			"Blue",
-			"Green",
-			"Yellow"
+			"No",
+			"I am a feral child"
 		]
 	},
 	{
-		"question": "question two?",
+		"question": "Favourite Dish?",
 		"answers": [
-			" Temporibus laudantium nisi ducimus velit fugit sed aut. Aut voluptas animi fuga necessitatibus. Repellat accusamus aliquam tenetur quos voluptas a quis. Voluptatem beatae aut cumque voluptate vel. Facilis error odit unde et ut fuga. Red",
+			"Plate",
+			"Bowl",
+			"Mug",
+			"Teapot"
+		]
+	},
+	{
+		"question": "Favourite trigonometric function?",
+		"answers": [
+			"Sine",
+			"Cosine",
+			"Tangent",
+			"Secant"
+		]
+	},
+	{
+		"question": "Hogwarts house?",
+		"answers": [
+			"Gryffindor",
+			"Slytherin",
+			"Hufflepuff",
+			"Ravenclaw"
+		]
+	},
+	{
+		"question": "Favourite penis shape?",
+		"answers": [
+			"Chode",
+			"Noodle",
+			"Conical",
+			"Hook",
+			"None"
+		]
+	},
+	{
+		"question": "Favourite favourite?",
+		"answers": [
+			"Colour",
+			"Animal",
+			"Food",
+			"Number"
+		]
+	},
+	{
+		"question": "Who is the most attractive mythological figure?",
+		"answers": [
+			"Poppy (Literal Goddess)",
+			"Medusa",
+			"Loki",
+			"Venus"
+		]
+	},
+	{
+		"question": "Which is the most gay?",
+		"answers": [
+			"Being bummed",
+			"Sucking a dick"
+		]
+	},
+	{
+		"question": "Favourite number from 1 to 5?",
+		"answers": [
 			"1",
 			"2",
-			"3"
+			"3",
+			"4",
+			"5"
+		]
+	},
+	{
+		"question": "Favourite religion?",
+		"answers": [
+			"Christianity",
+			"Judaism",
+			"Islam",
+			"Buddhism",
+			"Sikhism",
+			"Hinduism"
+		]
+	},
+	{
+		"question": "Favourite calculator?",
+		"answers": [
+			"fx-991EX",
+			"fx-83GTX",
+			"CG50",
+			"Phone's calculator app"
+		]
+	},
+	{
+		"question": "Most attractive non-human Harry Potter character?",
+		"answers": [
+			"Thestral",
+			"Dobby",
+			"Fawkes the Phoenix",
+			"Fluffy"
+		]
+	},
+	{
+		"question": "Favourite teacher(s)?",
+		"answers": [
+			"Mr Mismar",
+			"Kathy & Becky",
+			"Ms Davis",
+			"Ms Harman",
+			"Mr Essuman"
+		]
+	},
+	{
+		"question": "Favourite chemical bond?",
+		"answers": [
+			"Hydrogen",
+			"Dipole",
+			"Vanderwaals",
+			"Covalent",
+			"Ionic",
+			"Metallic"
+		]
+	},
+	{
+		"question": "Favourite bodily fluid to drink?",
+		"answers": [
+			"Blood",
+			"Saliva",
+			"Cum",
+			"Urine"
+		]
+	},
+	{
+		"question": "Favourite deadly sin?",
+		"answers": [
+			"Sloth",
+			"Gluttony",
+			"Wrath",
+			"Greed",
+			"Lust",
+			"Envy",
+			"Pride"
+		]
+	},
+	{
+		"question": "Favourite PowerPuff girl?",
+		"answers": [
+			"Blossom",
+			"Bubbles",
+			"The green one"
+		]
+	},
+	{
+		"question": "Favourite Teletubby?",
+		"answers": [
+			"Tinky Winky",
+			"Dipsy",
+			"La-la",
+			"Po"
+		]
+	},
+	{
+		"question": "Favourite straight couple?",
+		"answers": [
+			"Nick & Milly",
+			"Chloé & Jacob",
+			"Sam & iPad",
+			"George & Jess"
 		]
 	}
 ]

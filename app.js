@@ -9,7 +9,7 @@ const questions = require("./config/questions.json")
 const config = require("./config/config")
 const db_functions = require("./db_functions")
 
-console.log(process.env.CUPID_DB_NAME)
+console.log("envvar db:", process.env.CUPID_DB_NAME)
 
 const app = express()
 
@@ -39,7 +39,7 @@ app.get("/quiz", function (req, res) {
 app.post("/submit", async function (req, res) {
 
 		let rights = {}
-		rights.qa = {}
+		rights.qa = []
 
 		let wrongs = {}
 		let template_data = {}
@@ -70,7 +70,8 @@ app.post("/submit", async function (req, res) {
 		// seperate questions from general info
 		for (key of Object.keys(req.body)) {
 			if (key.includes("question")) {
-				rights.qa[key] = req.body[key]
+				let qNo = key.slice(-1)
+				rights.qa[qNo] = req.body[key]
 			} else {
 				rights[key] = req.body[key]
 			}

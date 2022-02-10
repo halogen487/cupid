@@ -161,7 +161,7 @@ footer{
 }
 @media (max-width: 1024px) {
 	body {
-		font-size: 36px;
+		font-size: 24px;
 	}
 	.card {
 		border-radius: 0em;
