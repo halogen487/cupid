@@ -171,7 +171,7 @@ footer{
 		font-size: 24px;
 	}
 	.card {
-		width: 100%;
+		width: calc(100%-1em);
 	}
 	input {
 		font-size: 1.2em;
