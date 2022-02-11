@@ -1,0 +1,7 @@
+for i in rows:
+	for j in rows:
+		if j.id != i.id:
+			j.score = 0
+			for k in answers:
+				score += answer_score[i.answers[k]][j.answers[k]]
+	i.scores[j.id] = j.score
