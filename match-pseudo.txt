@@ -4,4 +4,4 @@ for i in rows:
 			j.score = 0
 			for k in answers:
 				score += answer_score[i.answers[k]][j.answers[k]]
-	i.scores[j.id] = j.score
+		i.scores[j.id] = j.score

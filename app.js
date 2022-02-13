@@ -71,12 +71,13 @@ app.post("/submit", async function (req, res) {
 		// seperate questions from general info
 		for (key of Object.keys(req.body)) {
 			if (key.includes("question")) {
-				let qNo = key.slice(-1)
+				let qNo = key.slice(8) // dumb bitch
 				rights.qa[qNo] = req.body[key]
 			} else {
 				rights[key] = req.body[key]
 			}
 		}
+		console.log(rights)
 
 		// check if gender entered does not match expected
 		if (config.gender_list.indexOf(rights.gender) < 0){
@@ -139,6 +140,15 @@ app.post("/submit", async function (req, res) {
 		//always close that db connection
 		conn.awaitEnd()
 	}
+})
+
+app.get("/test", async function (req, res) {
+	let conn = await db_functions.connectdb(process.env.CUPID_DB_HOST,
+											process.env.CUPID_DB_USER,
+											process.env.CUPID_DB_PASS,
+											process.env.CUPID_DB_NAME)
+	let table = await db_functions.match(conn)
+	res.render(path.join(__dirname, "pages/submit.html"), {rightsStr: JSON.stringify(table, null, 2)})
 })
 
 app.use(function (req, res) {

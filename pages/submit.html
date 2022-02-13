@@ -7,16 +7,15 @@
 <body>
 <%- include("header.html")%>
 <main>
-	<div class="container">
-		<div class="jumbotron">
-			<h1>You submitted the quiz!</h1>
-			<p>Congratulations.</p>
-		</div>
-		<div class="card">
-			<p>You submitted:</p>
-			<pre><%= rightsStr %></pre>
-		</div>
+	<div class="jumbotron">
+		<h1>You submitted the quiz!</h1>
+		<p>Congratulations.</p>
 	</div>
+	<section class="card">
+		<p>You submitted:</p>
+		<pre><%= rightsStr %></pre>
+	</section>
+	<a href="/quiz" class="big">Take the quiz again &rarr;</a>
 </main>
 <%- include("footer.html")%>
 </body>
