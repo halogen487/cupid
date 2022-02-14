@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Jacob's wonderful site
+		</title>
+		<link rel="stylesheet" type="text/css" href="/static/cupid.css"/>
+	</head>
+	<body>
+		<%- include("header.html") %>
+		<main>
+				<div class="jumbotron">
+					<h1>cupid results</h1>
+					<p class="sub">The results are in</p>
+				</div>
+					<table class="results-table">
+					  <tr>
+					    <th>Name</th>
+					    <th>Match</th>
+					  </tr>
+            <% for (row in table) { %>
+              <tr>
+                <td><%= table[row]["Name"] %></td>
+                <td><%= table[row]["Match"] %></td>
+              </tr>
+            <% } %>
+					</table>
+		</main>
+		<%- include("footer.html")%>
+	</body>
+</html>
