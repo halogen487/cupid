@@ -118,8 +118,8 @@ app.post("/submit", async function (req, res) {
 									 ${conn.escape(rights.gender)}, 
 									 ${conn.escape(rights.comment)}, 
 									 ${conn.escape(JSON.stringify(rights.qa))})`
-									 
 									 )
+
 			// send sql to db
 			await db_functions.send_sql(conn, sql_code)
 
@@ -149,6 +149,17 @@ app.get("/test", async function (req, res) {
 											process.env.CUPID_DB_NAME)
 	let table = await db_functions.match(conn)
 	res.render(path.join(__dirname, "pages/submit.html"), {rightsStr: JSON.stringify(table, null, 2)})
+})
+
+app.get("/results", async function (req, res) {
+  let conn = await db_functions.connectdb(process.env.CUPID_DB_HOST,
+											process.env.CUPID_DB_USER,
+											process.env.CUPID_DB_PASS,
+											process.env.CUPID_DB_NAME)
+	let table = await db_functions.send_sql(conn, `SELECT a.name AS Name, b.name AS "Match" FROM cupid_data a INNER JOIN cupid_data b ON a.matchId = b.id ORDER BY name ASC;`)
+	console.log(table)
+	console.log(table[0].Name)
+	res.render(path.join(__dirname, "pages/results.html"), {table: table})
 })
 
 app.use(function (req, res) {
