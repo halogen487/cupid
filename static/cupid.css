@@ -157,6 +157,12 @@ textarea{
 .big {
 	font-size: 1.5em;
 }
+table.results-table tr, th {
+  text-align: center;
+}
+table.results-table th {
+  font-weight: bold;
+}
 /*footer*/
 footer{
 	display: flex;
