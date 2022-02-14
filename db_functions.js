@@ -61,4 +61,4 @@ async function getLoverCount (conn, table) {
 	}
 }
 
-module.exports = {connectdb, send_sql, email_in_table, getLoverCount, match}
+module.exports = {connectdb, send_sql, email_in_table, getLoverCount}
